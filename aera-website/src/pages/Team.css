@@ -1,0 +1,220 @@
+/* Hallmark · pre-emit critique: P4 H4 E5 S4 R4 V4 · theme: existing project tokens (not catalog) */
+
+/* Team_v5.css
+   Assumes tokens.css is already imported globally in the app
+   (defines --color-*, --font-*, --text-*, --space-*, --ease-out, --dur-*).
+
+   Clears the fixed navbar via --navbar-height, which the app is expected
+   to define globally. Falls back to 84px — adjust that fallback (or set
+   --navbar-height elsewhere) if the real navbar is a different height. */
+
+.team-page {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  padding-top: calc(var(--navbar-height, 84px) + var(--space-lg));
+  padding-bottom: var(--space-xl);
+}
+
+/* ---------- Hero: trimmed to a single centered label ---------- */
+
+.team-hero {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--space-md) var(--space-md);
+  text-align: center;
+}
+
+.team-eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.team-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.team-department {
+  position: relative;
+}
+
+/* Section divider lives on the section itself, not the header, and is
+   pulled up to the midpoint of the gap above it — so it separates two
+   departments evenly instead of sitting flush against the next title.
+   The first department has no sibling above it, so it gets no divider. */
+.team-department + .team-department::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--space-xl) / -2);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 640px;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.team-department-header {
+  margin: 0 auto var(--space-md);
+  max-width: 640px;
+  text-align: center;
+}
+
+.team-department-name {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-md);
+}
+
+.team-department-name::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--dept-tint, var(--color-accent));
+}
+
+.team-department-count {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+}
+
+.team-department-blurb {
+  margin: var(--space-sm) 0 0;
+  font-size: var(--text-base);
+  color: var(--color-ink-muted);
+}
+
+.team-person-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.team-person-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  width: 190px;
+  flex: 0 0 auto;
+  padding: var(--space-sm);
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  transition: box-shadow var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+
+.team-person-card:hover {
+  box-shadow: 0 14px 30px rgba(60, 58, 94, 0.14);
+  border-color: var(--color-focus);
+}
+
+.team-person-card:hover .team-seal-edge {
+  stroke-dashoffset: 0;
+}
+
+.team-seal {
+  display: block;
+}
+
+.team-seal-field {
+  fill: var(--color-paper-subtle);
+  opacity: 0.35;
+}
+
+.team-seal-ring {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.team-seal-edge {
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  opacity: 0.65;
+  transition: stroke-dashoffset var(--dur-base) var(--ease-out);
+}
+
+.team-seal-node {
+  opacity: 0.9;
+}
+
+.team-person-name {
+  margin: var(--space-xs) 0 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-base);
+  color: var(--color-ink);
+}
+
+.team-person-role {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+}
+
+/* ---------- Footer ---------- */
+
+.team-footer {
+  max-width: 1080px;
+  margin: var(--space-xl) auto 0;
+  padding: var(--space-md) var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+}
+
+.team-footer a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* ---------- Accessibility ---------- */
+
+.team-page a:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-person-card {
+    transition: none;
+  }
+  .team-seal-edge {
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .team-person-card {
+    width: 150px;
+  }
+}

@@ -1,0 +1,81 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-paper);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+
+  transition: padding 0.3s ease, background-color 0.3s ease, border-bottom 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.navbar.scrolled{
+  padding: var(--space-xs) 0;
+  background-color: rgba(245, 234, 225, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(60, 58, 94, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.nav-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+
+  border-bottom: 1px solid transparent; 
+  transition: border-bottom 0.3s ease;   
+}
+
+.nav-logo img{
+  display: flex;
+  height: 48px;
+  align-items: center;
+  transition: height 0.3s ease;   
+}
+
+.navbar.scrolled .nav-logo img{
+    height: 32px;
+}
+
+.nav-links{
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-ink);
+  font-weight: 500;
+  font-size: var(--text-sm);
+
+  transition: all 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-accent);
+  opacity: 0.6;
+}
+
+.nav-links .register-btn {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-links .register-btn:hover {
+  color: var(--color-paper);
+  opacity: 0.9;
+  transform: scale(1.03);
+}

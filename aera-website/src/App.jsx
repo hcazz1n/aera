@@ -1,31 +1,29 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import ScrollToTop from './components/ScrollToTop';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import About from './pages/About';
+import Topic from './pages/Topic';
+import Team from './pages/Team';
+import UnderConstruction from './pages/UnderConstruction';
 
-import './App.css'; 
+import './App.css';
 
 function App() {
   return (
     <Router>
-      {/* Elements placed outside the <Routes> block stay locked in place 
-        across the whole site. Your banners will go here.
-      */}
-      {/* <RegBanner /> */}
-      {/* <TopBanner /> */}
-
+      <ScrollToTop />
+      <Navbar />
       <Routes>
-        {/* Route for your main landing page */}
         <Route path="/" element={<Home />} />
-        
-        {/* Future routes will go here:
         <Route path="/about" element={<About />} />
-        <Route path="/topics" element={<Topics />} />
-        <Route path="/staff" element={<Staff />} />
-        <Route path="/contact" element={<Contact />} />
-        */}
+        <Route path="/topic" element={<Topic />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/under_construction" element={<UnderConstruction />} />
+        {/*>
+        <Route path="/pricing" element={<Pricing/>}/>
+        <Route path="/contact" element={<Contact/>}/> */}
       </Routes>
-
-      {/* Your footer banner goes here */}
-      {/* <BottomBanner /> */}
     </Router>
   );
 }

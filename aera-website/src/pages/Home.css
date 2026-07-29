@@ -1,10 +1,9 @@
 .home-container {
   padding: var(--space-md) var(--space-md) var(--space-xl) var(--space-md);
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 100px auto;
 }
 
-/* Local Action Header (Logo + CTA) */
 .action-header {
   display: flex;
   justify-content: space-between;
@@ -15,7 +14,7 @@
 }
 
 .hero-logo {
-  height: 48px; /* Scales the transparent PNG elegantly */
+  height: 48px;
   width: auto;
   object-fit: contain;
 }
@@ -49,7 +48,7 @@
   cursor: not-allowed;
 }
 
-/* Marquee Hero */
+
 .marquee-wrapper {
   margin-bottom: var(--space-xl);
   max-width: 900px;
@@ -65,7 +64,9 @@
   color: var(--color-accent);
 }
 
-/* Editorial Content */
+.marquee-title 
+
+
 .editorial-block {
   display: flex;
   flex-direction: column;
@@ -84,7 +85,7 @@
 
 .editorial-heading {
   font-size: var(--text-2xl);
-  line-height: 1.1;
+  line-height: 1.25;
   margin-bottom: var(--space-xs);
 }
 
@@ -93,7 +94,7 @@
   color: var(--color-ink-muted);
 }
 
-/* Data Rows (For Dates & Structure) */
+
 .data-row-container {
   border-top: 1px solid var(--color-border);
   margin-bottom: var(--space-xl);
@@ -102,7 +103,7 @@
 .data-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   padding: var(--space-md) 0;
   border-bottom: 1px solid var(--color-border);
 }
@@ -124,7 +125,7 @@
   font-weight: 500;
 }
 
-/* Utility Footer Link */
+
 .utility-footer {
   text-align: right;
   padding-top: var(--space-md);
@@ -144,7 +145,7 @@
   text-decoration: none;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .data-row {
     flex-direction: column;
@@ -155,11 +156,7 @@
   .btn-primary { transition: none; }
 }
 
-/* =========================================
-   Motion: Fade-Up (Load Sequence)
-   ========================================= */
 
-/* 1. Define the primitive */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -171,7 +168,7 @@
   }
 }
 
-/* 2. Attach to structural blocks and hide initially */
+
 .action-header,
 .marquee-wrapper,
 .editorial-block,
@@ -181,14 +178,14 @@
   animation: fadeUp 800ms var(--ease-out) forwards;
 }
 
-/* 3. Stagger the delays for a smooth cascade */
+
 .action-header       { animation-delay: 0ms; }
 .marquee-wrapper     { animation-delay: 150ms; }
 .editorial-block     { animation-delay: 300ms; }
 .data-row-container  { animation-delay: 450ms; }
 .utility-footer      { animation-delay: 600ms; }
 
-/* 4. Hallmark Gate: Respect Reduced Motion */
+
 @media (prefers-reduced-motion: reduce) {
   .action-header,
   .marquee-wrapper,

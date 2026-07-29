@@ -1,0 +1,111 @@
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import "./Topic.css";
+
+//every entry = 1 paragraph
+const PROMPT_PARAGRAPHS = [
+    "We will share the prompt one month before the research competition begins to give everyone a fair chance at building something incredible!",
+    "Check back soon! Good luck and thank you :)"
+];
+
+const SECTIONS = [
+  {
+    title: "Process Info Below",
+    body: "Nam tempus orci sit amet gravida consectetur. Fusce posuere porttitor lacus laoreet mattis. Duis fermentum quam lectus, vel lacinia arcu ullamcorper in.",
+  },
+  {
+    title: "Lorem Ipsum",
+    body: "Nam tempus orci sit amet gravida consectetur. Fusce posuere porttitor lacus laoreet mattis. Duis fermentum quam lectus, vel lacinia arcu ullamcorper in.",
+  },
+  {
+    title: "Dolor Sit",
+    body: "Nam tempus orci sit amet gravida consectetur. Fusce posuere porttitor lacus laoreet mattis. Duis fermentum quam lectus, vel lacinia arcu ullamcorper in.",
+  },
+];
+
+export default function TopicPage() {
+  const stageRef = useRef(null);
+
+  // scrollYProgress runs 0 -> 1 across the full pinned scroll distance
+  // defined by .stage-wrapper's height in the CSS.
+  const { scrollYProgress } = useScroll({
+    target: stageRef,
+    offset: ["start start", "end end"],
+  });
+
+  //Hero: stays put, then dims/blurs as the panel scales in ---
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15, 0.4], [1, 1, 0.2]);
+  const heroBlurPx = useTransform(scrollYProgress, [0, 0.15, 0.4], [0, 0, 10]);
+  const heroFilter = useTransform(heroBlurPx, (v) => `blur(${v}px)`);
+
+  //"Scroll for more info" cue: fades almost immediately on scroll
+  const cueOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
+  
+  /*
+  Text panel: scales from a small centered card to fullscreen,
+  holds while the reader scrolls through the paragraphs, then
+  fades slightly as the next section takes over. Scrolling back
+  up reverses all of this automatically since it's driven
+  directly by scrollYProgress.
+  */
+  const panelScale = useTransform(
+    scrollYProgress,
+    [0.12, 0.42, 0.86, 1],
+    [0.3, 1, 1, 0.95]
+  );
+  const panelRadius = useTransform(scrollYProgress, [0.12, 0.42], [28, 0]);
+  const panelOpacity = useTransform(
+    scrollYProgress,
+    [0.1, 0.2, 0.86, 1],
+    [0, 1, 1, 0]
+  );
+
+  return (
+    <div className="topic-page">
+      <div className="stage-wrapper" ref={stageRef}>
+        <div className="stage">
+          <motion.div
+            className="hero"
+            style={{ opacity: heroOpacity, filter: heroFilter }}
+          >
+            <p className="hero-eyebrow">This year's research topic...</p>
+            <h1 className="hero-title">Stay Tuned...</h1>
+            <motion.div className="scroll-cue-wrapper">
+                <div className="scroll-cue">
+                    <span>Scroll for more info</span>
+                    <span className="scroll-cue-arrow" aria-hidden="true" />
+                </div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="text-panel"
+            style={{
+              scale: panelScale,
+              borderRadius: panelRadius,
+              opacity: panelOpacity,
+            }}
+          >
+            <div className="text-panel-inner">
+              <p className="text-panel-eyebrow">The Prompt</p>
+              {PROMPT_PARAGRAPHS.map((paragraph, i) => (
+                <p key={i} className="text-panel-paragraph">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      <main className="more-info">
+        {SECTIONS.map((section) => (
+          <section key={section.title} className="info-section">
+            <h2>{section.title}</h2>
+            <p>{section.body}</p>
+          </section>
+        ))}
+      </main>
+    </div>
+  );
+}

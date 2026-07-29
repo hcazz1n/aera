@@ -1,38 +1,36 @@
-/* Hallmark · macrostructure: Marquee Hero (Action Header) · tone: editorial · theme: custom
- * vibe: "AERA Logo Brand Colors" · paper: #f5eae1 · accent: #3d3f68 · display: EB Garamond · body: Inter
- * axes: light / high-contrast-serif / cool-violet
- */
 :root {
-  /* Color - Custom AERA Brand Palette */
-  --color-paper: #f5eae1;         /* Light cream/peach background */
-  --color-paper-subtle: #d5ced3;  /* Dusty purple/grey for subtle backgrounds */
-  --color-ink: #3c3a5e;           /* Very dark violet/slate for primary text */
-  --color-ink-muted: #5f5a77;     /* Medium muted purple/blue for secondary text */
-  --color-accent: #3d3f68;        /* Deep violet for primary buttons and accents */
-  --color-accent-hover: #5f5a77;  /* Lighter violet for hover states */
-  --color-focus: #c7b2cd;         /* Soft lavender for focus rings */
-  --color-border: #c7b2cd;        /* Soft lavender for structural lines */
+  /* AERA colour palette */
+  --color-paper: #f5eae1;           /*primary background*/
+  --color-paper-subtle: #d5ced3;    /*secondary background*/
+  --color-ink: #3c3a5e;             /*primary text*/
+  --color-ink-muted: #5f5a77;       /*secondary text*/
+  --color-accent: #3d3f68;          /*primary buttons & accents*/
+  --color-accent-hover: #5f5a77;    /*hover states*/
+  --color-focus: #c7b2cd;           /*focus rings (border around hovered element)*/
+  --color-border: #c7b2cd;          /*structural/border lines*/
 
-  /* Typography (Preserved from Studio Theme) */
-  --font-display: "EB Garamond", serif;
-  --font-body: "Inter", sans-serif;
+  --color-tint-2: #605c81;
+  --color-tint-3: #82799b;
+  --color-tint-4: #a595b4;
+
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Outfit", sans-serif;
   
   --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1.0625rem;
+  --text-sm: 0.9rem;
+  --text-base: 1.05rem;
   --text-lg: 1.25rem;
   --text-xl: 1.5rem;
-  --text-2xl: 2.5rem;
-  --text-display: clamp(4rem, 10vw, 7rem);
+  --text-2xl: 2.0rem;
+  --text-3xl: 2.5rem;
+  --text-display: clamp(3rem, 10vw, 5rem);
 
-  /* Spacing (4pt scale) */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 8rem;
 
-  /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 150ms;
   --dur-base: 300ms;
