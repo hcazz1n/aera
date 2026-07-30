@@ -60,7 +60,6 @@ export default function UnderConstruction() {
 
   return (
     <main className="construction-page">
-      <div className="grain" aria-hidden="true"/>
       <div className="network network--top" aria-hidden="true">
         <NodeNetwork network={topNetwork} activeNode={topNetwork.traversal[pulse % topNetwork.traversal.length]} />
       </div>

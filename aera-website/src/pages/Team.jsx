@@ -208,13 +208,6 @@ export default function TeamPage() {
           />
         ))}
       </main>
-
-      <footer className="team-footer">
-        <p>
-          Want to join a working group next season?{" "}
-          <a href="mailto:team@aera.org">Reach out</a>.
-        </p>
-      </footer>
     </div>
   );
 }
