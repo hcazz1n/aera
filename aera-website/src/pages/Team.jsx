@@ -196,7 +196,7 @@ export default function TeamPage() {
   return (
     <div className="team-page">
       <header className="team-hero">
-        <p className="team-eyebrow">The team that makes it all possible</p>
+        <p className="team-eyebrow">The team making it possible</p>
       </header>
 
       <main className="team-body">

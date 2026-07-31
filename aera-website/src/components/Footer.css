@@ -1,0 +1,205 @@
+.aera-footer {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: "Outfit", sans-serif;
+  padding: 2.25rem 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.aera-footer * {
+  box-sizing: border-box;
+}
+
+.aera-footer__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.aera-footer__index-line-1 {
+  transform-origin: left;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-focus) 0%, var(--color-tint-4) 55%, transparent 100%);
+}
+
+.aera-footer__index-line-2 {
+  transform-origin: right;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-tint-4) 45%, var(--color-focus) 100%);
+}
+
+.aera-footer__top {
+  display: grid;
+  grid-template-columns: 0.25fr auto 0.25fr;
+  align-items: start;
+  place-items: center;
+  gap: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 1.75rem;
+}
+
+@media (max-width: 720px) {
+  .aera-footer__top {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aera-footer__top {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aera-footer__brand-logo {
+  width: 300px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.aera-footer__brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.aera-footer__brand-logo span {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-tint-4);
+}
+
+.aera-footer__heading {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-tint-4);
+  margin: 0 0 0.85rem;
+  font-weight: 500;
+}
+
+.aera-footer__heading--inline {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.aera-footer__contact-social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.aera-footer__inline-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.aera-footer__nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  place-self: center;
+  column-gap: 2rem;
+  row-gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aera-footer__nav-link {
+  position: relative;
+  color: var(--color-paper);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 400;
+  width: fit-content;
+  display: inline-block;
+}
+
+.aera-footer__nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-focus);
+  transform: scaleX(0);
+  transform-origin: middle;
+  transition: transform 100ms ease;
+}
+
+.aera-footer__nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.aera-footer__contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-paper);
+  text-decoration: none;
+  font-size: 0.92rem;
+  border-bottom: 1px solid var(--color-tint-3);
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: border-bottom-color 300ms ease;
+}
+
+.aera-footer__contact-email:hover {
+  border-bottom-color: var(--color-focus);
+}
+
+.aera-footer__socials {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.aera-footer__social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--color-tint-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-paper);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.aera-footer__social-icon:hover {
+  border-color: var(--color-focus);
+  background-color: rgba(199, 178, 205, 0.1);
+}
+
+.aera-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.aera-footer__copyright {
+  font-size: 0.78rem;
+  color: var(--color-tint-4);
+  margin: 0;
+}
+
+.aera-footer__copyright strong {
+  color: var(--color-paper);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aera-footer__index-line-1, .aera-footer__index-line-2 {
+    transition: none !important;
+  }
+}

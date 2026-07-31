@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Topic from './pages/Topic';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/pricing" element={<Pricing/>}/>
         <Route path="/contact" element={<Contact/>}/> */}
       </Routes>
+      <Footer logoSrc="./src/assets/aera_connected_sm_ctr.png" />
     </Router>
   );
 }

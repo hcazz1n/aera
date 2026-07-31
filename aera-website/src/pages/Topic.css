@@ -154,8 +154,8 @@ html, body {
 }
 
 .hero-eyebrow   { animation-delay: 200ms; }
-.hero-title     { animation-delay: 800ms; }
-.scroll-cue     { animation-delay: 1400ms; }
+.hero-title     { animation-delay: 1000ms; }
+.scroll-cue     { animation-delay: 1600ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue-arrow {
