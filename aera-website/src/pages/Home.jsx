@@ -87,7 +87,7 @@ export default function Home() {
             <span>December 5th, 2026</span>
             <span>Toronto, ON</span>
           </div>
-          <a className={cx('btn-primary')} href="/under_construction">Register Here <span aria-hidden="true">↗</span></a>
+          <a className={cx('btn-primary')} href="https://docs.google.com/forms/d/e/1FAIpQLScfigf8fhJnxRxKzjVP7v7g2iz7XoHNjmo52ggVRnNaqTFHVA/viewform?pli=1" target="_blank" rel="noopener noreferrer">Register Here <span aria-hidden="true">↗</span></a>
         </div>
       </section>
 

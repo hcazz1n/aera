@@ -33,7 +33,7 @@ const Navbar = () => {
             <Link to="/topic">Topics</Link>
             <Link to="/team">Meet the Team</Link>
             <Link to="/under_construction">Contact Us</Link>
-            <Link to="/under_construction" className={cx('register-btn')}>Register</Link>
+            <Link to="https://docs.google.com/forms/d/e/1FAIpQLScfigf8fhJnxRxKzjVP7v7g2iz7XoHNjmo52ggVRnNaqTFHVA/viewform?pli=1" target="_blank" rel="noopener noreferrer" className={cx('register-btn')}>Register</Link>
             </div>
         </div>
         </nav>

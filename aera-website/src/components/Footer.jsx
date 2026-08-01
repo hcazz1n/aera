@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { label: "About AERA", href: "about" },
   { label: "Our Team", href: "team" },
   { label: "Contact Us", href: "under_construction" },
-  { label: "Register Now!", href: "under_construction" },
+  { label: "Register Now!", href: "https://docs.google.com/forms/d/e/1FAIpQLScfigf8fhJnxRxKzjVP7v7g2iz7XoHNjmo52ggVRnNaqTFHVA/viewform?pli=1"},
 ];
 
 const SOCIALS = [
@@ -40,7 +40,12 @@ export default function Footer({ logoSrc }) {
                     <ul className={cx("aera-footer__nav-grid")}>
                         {NAV_LINKS.map((link) => (
                         <li key={link.label}>
-                            <a className={cx("aera-footer__nav-link")} href={link.href}>
+                            <a 
+                                className={cx("aera-footer__nav-link")} 
+                                href={link.href} 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={link.label}>
                             {link.label}
                             </a>
                         </li>
