@@ -68,6 +68,18 @@
   opacity: 0.9;
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (min-width: 768px) {
   .about-container {
     grid-template-columns: 280px 1fr;

@@ -1,6 +1,8 @@
 import React, { useMemo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import "./Team.css";
+import styles from "./Team.module.css";
+
+const cx = (...classNames) => classNames.map((className) => styles[className]).filter(Boolean).join(" ");
 
 const TEAM = [
     {
@@ -99,20 +101,20 @@ function Seal({ name, tint, size = 88 }) {
 
   return (
     <svg
-      className="team-seal"
+      className={cx("team-seal")}
       viewBox={`0 0 ${size} ${size}`}
       width={size}
       height={size}
       aria-hidden="true"
     >
       <circle
-        className="team-seal-field"
+        className={cx("team-seal-field")}
         cx={center}
         cy={center}
         r={size * 0.44}
       />
       <circle
-        className="team-seal-ring"
+        className={cx("team-seal-ring")}
         cx={center}
         cy={center}
         r={size * 0.46}
@@ -120,7 +122,7 @@ function Seal({ name, tint, size = 88 }) {
       {edges.map(([a, b], i) => (
         <line
           key={i}
-          className="team-seal-edge"
+          className={cx("team-seal-edge")}
           x1={nodes[a].x}
           y1={nodes[a].y}
           x2={nodes[b].x}
@@ -131,7 +133,7 @@ function Seal({ name, tint, size = 88 }) {
       {nodes.map((n, i) => (
         <circle
           key={i}
-          className="team-seal-node"
+          className={cx("team-seal-node")}
           cx={n.x}
           cy={n.y}
           r={size * 0.028}
@@ -147,7 +149,7 @@ function PersonCard({ name, role, tint, index }) {
 
   return (
     <motion.li
-      className="team-person-card"
+      className={cx("team-person-card")}
       initial={reduceMotion ? false : { opacity: 0, y: 14 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -155,8 +157,8 @@ function PersonCard({ name, role, tint, index }) {
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: index * 0.03 }}
     >
       <Seal name={name} tint={tint} />
-      <p className="team-person-name">{name}</p>
-      <p className="team-person-role">{role}</p>
+      <p className={cx("team-person-name")}>{name}</p>
+      <p className={cx("team-person-role")}>{role}</p>
     </motion.li>
   );
 }
@@ -165,11 +167,11 @@ function DepartmentSection({ department, tint }) {
   //const count = department.members.length;
 
   return (
-    <section className="team-department" aria-labelledby={`dept-${department.id}`}>
-      <div className="team-department-header">
+    <section className={cx("team-department")} aria-labelledby={`dept-${department.id}`}>
+      <div className={cx("team-department-header")}>
         <h2
           id={`dept-${department.id}`}
-          className="team-department-name"
+          className={cx("team-department-name")}
           style={{ "--dept-tint": tint }}
         >
           {department.name}
@@ -177,7 +179,7 @@ function DepartmentSection({ department, tint }) {
         {/* <p className="team-department-blurb">{department.blurb}</p> */}{/*Unecessary, can keep if the team wants*/}
       </div>
 
-      <ul className="team-person-grid">
+      <ul className={cx("team-person-grid")}>
         {department.members.map((member, i) => (
           <PersonCard
             key={member.name}
@@ -194,12 +196,12 @@ function DepartmentSection({ department, tint }) {
 
 export default function TeamPage() {
   return (
-    <div className="team-page">
-      <header className="team-hero">
-        <p className="team-eyebrow">The team making it possible</p>
+    <div className={cx("team-page")}>
+      <header className={cx("team-hero")}>
+        <p className={cx("team-eyebrow")}>The team making it possible</p>
       </header>
 
-      <main className="team-body">
+      <main className={cx("team-body")}>
         {TEAM.map((department, i) => (
           <DepartmentSection
             key={department.id}

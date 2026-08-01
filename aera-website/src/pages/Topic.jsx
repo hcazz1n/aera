@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import "./Topic.css";
+import styles from "./Topic.module.css";
+
+const cx = (...classNames) => classNames.map((className) => styles[className]).filter(Boolean).join(" ");
 
 //every entry = 1 paragraph
 const PROMPT_PARAGRAPHS = [
@@ -61,35 +63,35 @@ export default function TopicPage() {
   );
 
   return (
-    <div className="topic-page">
-      <div className="stage-wrapper" ref={stageRef}>
-        <div className="stage">
+    <div className={cx("topic-page")}>
+      <div className={cx("stage-wrapper")} ref={stageRef}>
+        <div className={cx("stage")}>
           <motion.div
-            className="hero"
+            className={cx("hero")}
             style={{ opacity: heroOpacity, filter: heroFilter }}
           >
-            <p className="hero-eyebrow">This year's research topic...</p>
-            <h1 className="hero-title">Stay Tuned...</h1>
-            <motion.div className="scroll-cue-wrapper">
-                <div className="scroll-cue">
+            <p className={cx("hero-eyebrow")}>This year's research topic...</p>
+            <h1 className={cx("hero-title")}>Stay Tuned...</h1>
+            <motion.div className={cx("scroll-cue-wrapper")}>
+                <div className={cx("scroll-cue")}>
                     <span>Scroll for more info</span>
-                    <span className="scroll-cue-arrow" aria-hidden="true" />
+                    <span className={cx("scroll-cue-arrow")} aria-hidden="true" />
                 </div>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="text-panel"
+            className={cx("text-panel")}
             style={{
               scale: panelScale,
               borderRadius: panelRadius,
               opacity: panelOpacity,
             }}
           >
-            <div className="text-panel-inner">
-              <p className="text-panel-eyebrow">The Prompt</p>
+            <div className={cx("text-panel-inner")}>
+              <p className={cx("text-panel-eyebrow")}>The Prompt</p>
               {PROMPT_PARAGRAPHS.map((paragraph, i) => (
-                <p key={i} className="text-panel-paragraph">
+                <p key={i} className={cx("text-panel-paragraph")}>
                   {paragraph}
                 </p>
               ))}
@@ -98,9 +100,9 @@ export default function TopicPage() {
         </div>
       </div>
 
-      <main className="more-info">
+      <main className={cx("more-info")}>
         {SECTIONS.map((section) => (
-          <section key={section.title} className="info-section">
+          <section key={section.title} className={cx("info-section")}>
             <h2>{section.title}</h2>
             <p>{section.body}</p>
           </section>

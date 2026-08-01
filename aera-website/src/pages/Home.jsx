@@ -1,83 +1,164 @@
-import React from 'react';
-import './Home.css';
+import React, { useEffect } from 'react';
+import styles from './Home.module.css';
+
+const cx = (...classNames) => classNames.map((className) => styles[className]).filter(Boolean).join(' ');
+
+const VALUES = [
+  {
+    eyebrow: 'Community',
+    title: 'Research belongs to everyone.',
+    copy: 'A room for brave questions, unexpected disciplines, and the people who have been waiting to be heard.',
+    variant: 'vertical',
+  },
+  {
+    eyebrow: 'Impact',
+    title: 'Make your work matter.',
+    copy: 'Share emerging research, meet generous mentors, and leave with momentum for what comes next.',
+    variant: 'horizontal',
+  },
+  {
+    eyebrow: 'Together',
+    title: 'Connection is the method.',
+    copy: 'A day of conversations that brings research out of silos and into a larger, livelier world.',
+    variant: 'mirrored',
+  },
+];
+
+const SPONSORS = ['Check Back Soon', 'Check Back Soon', 'Check Back Soon', 'Check Back Soon', 'Check Back Soon', 'Check Back Soon', 'Check Back Soon',];
+const DNA_RUNG_COUNT = 18;
+
+function DnaHelix({ variant }) {
+  return (
+    <div className={cx('value-card__dna', `value-card__dna--${variant}`)} aria-hidden="true">
+      <div className={cx('dna-helix')}>
+        {Array.from({ length: DNA_RUNG_COUNT }, (_, index) => (
+          <span className={cx('dna-rung')} key={index} style={{ '--rung-index': index }}>
+            <i className={cx('dna-rung__node')} />
+            <b className={cx('dna-rung__connector')} />
+            <i className={cx('dna-rung__node')} />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
+  useEffect(() => {
+    let rafId;
+    const handleScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); 
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   return (
-    <main className="home-container">
-      
-      {/* Absolute Top Action Header
-      <nav className="action-header">
-        <img 
-          src="/src/assets/aera_transparent_notext.png" 
-          alt="AERA Logo" 
-          className="hero-logo" 
-        />
-        <button 
-          className="btn-primary" 
-          onClick={() => window.location.href='/register'}
-        >
-          Register Now
-        </button>
-      </nav> */}
+    <main className={cx('home-container')}>
+      <section className={cx('hero')} aria-labelledby="home-title">
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.3' }}>
+          <div className={cx('hero__orb', 'hero__orb--one')} aria-hidden="true" />
+        </div>
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.1' }}>
+          <div className={cx('hero__orb', 'hero__orb--two')} aria-hidden="true" />
+        </div>
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '-0.15' }}>
+        </div>
 
-      {/*Hero Txt*/}
-      <header className="marquee-wrapper">
-        <h1 className="marquee-title">
-          Explore today,<br/>
-          change tomorrow;<br/>
-          <span>a new aera of research.</span>
+        <div className={cx('hero__topline')}>
+          <span>AERA / 2026</span>
+        </div>
+
+        <h1 id="home-title" className={cx('hero__title')}>
+          Explore today,<br />
+          change tomorrow;<br />
+          <em>a new AERA</em> of research.
         </h1>
-        <span className="editorial-heading">Toronto, ON</span>
-        <br/>
-        <span className="editorial-heading">January 1st</span>
-        <br/>
-        <button className="btn-primary" onClick={() => window.location.href='/under_construction'}>
-          Register Here
-        </button>
 
-
-      </header>
-
-      {/*Mission*/}
-      <section className="editorial-block">
-        {/* <span className="editorial-label">The Assembly</span> */}
-        <h2 className="editorial-heading">Elevating underrepresented topics in academia.</h2>
-        <p className="editorial-body">
-          The Advancing Equity in Research Assembly (AERA) is an annual conference hosted in the heart of Canada at the University of Toronto.
-        </p>
+        <div className={cx('hero__footer')}>
+          <div className={cx('hero__date')} aria-label="Conference date and location">
+            <span>December 5th, 2026</span>
+            <span>Toronto, ON</span>
+          </div>
+          <a className={cx('btn-primary')} href="/under_construction">Register Here <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
 
-      {/*Structured Data (may get rid of not loving the design rn)*/}
-      <section className="data-row-container">
-        
-        <article className="data-row">
-          <div className="data-row-title">Location</div>
-          <div className="data-row-content">
-            <strong>University of Toronto</strong><br />
-            Toronto, Ontario, Canada
-          </div>
-        </article>
+      <section className={cx('intro')} aria-labelledby="intro-title">
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.2' }}>
+        </div>
+        <div className={cx('intro__header')}>
+          <h2 id="intro-title">Discover existing ideas, then build your very own.</h2>
+        </div>
+        <div className={cx('intro__paragraph')}>
+          <p>AERA is a one-day research conference for questions that deserve more room, more care, and more voices. Encounter research ideas and share your own to advocate for underrepresented research and to meet professionals in the field.</p>
+        </div>
+      </section>
 
-        <article className="data-row">
-          <div className="data-row-title">Conference Format</div>
-          <div className="data-row-content">
-            <ul style={{ margin: 0, paddingLeft: '1.25rem' }}>
-              <li>Guest speakers</li>
-              <li>Student research presentations</li>
-              <li>Live judging & awards</li>
-            </ul>
-          </div>
-        </article>
+      <section className={cx('values')} aria-label="What AERA stands for">
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '-0.1' }}>
+        </div>
 
-        <article className="data-row">
-          <div className="data-row-title">Important Dates</div>
-          <div className="data-row-content">
-            Registration Opens: <strong>TBA</strong><br />
-            Project Submissions: <strong>TBA</strong><br />
-            Conference Day: <strong>TBA</strong>
-          </div>
-        </article>
+        <div className={cx('values__heading')}>
+          <p className={cx('section-kicker')}>Why AERA</p>
+          <p className={cx('section-kicker')}>AERA / 2026</p>
+        </div>
+        <div className={cx('values__grid')}>
+          {VALUES.map((value) => (
+            <article className={cx('value-card')} key={value.eyebrow}>
+              <DnaHelix variant={value.variant} />
+              <div className={cx('value-card__shade')} />
+              <div className={cx('value-card__content')}>
+                <p className={cx('value-card__eyebrow')}>{value.eyebrow}</p>
+                <h3>{value.title}</h3>
+                <p>{value.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
+      <section className={cx('details')} aria-labelledby="details-title">
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.15' }}>
+        </div>
+
+        <div className={cx('details__intro')}>
+          <p className={cx('section-kicker')}>AERA / 2026</p>
+          <h2 id="details-title">Make room for a new perspective.</h2>
+          <a className={cx('text-link')} href="/topic">This year's topic<span aria-hidden="true">→</span></a>
+        </div>
+        <div className={cx('details__list')}>
+          <article className={cx('detail-row')}>
+            <div><h3>Location</h3><p>University of Toronto St. George Campus<br />15 King's College Circle, Toronto, M5S 3H7<br /><small>University College</small></p></div>
+          </article>
+          <article className={cx('detail-row')}>
+            <div><h3>Format</h3><p>Format goes here!</p></div>
+          </article>
+          <article className={cx('detail-row')}>
+            <div><h3>When</h3><p>Saturday, December 5th, 2026<br /><small>Registration closes November 20th, 2026</small></p></div>
+          </article>
+        </div>
+      </section>
+
+      <section className={cx('sponsors')} aria-label="Our community partners">
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '-0.12' }}>
+        </div>
+
+        <p className={cx('section-kicker')}>With thanks to our community partners</p>
+        <div className={cx('sponsor-ticker')}>
+          <div className={cx('sponsor-ticker__track')}>
+            {[...SPONSORS, ...SPONSORS].map((sponsor, index) => (
+              <span className={cx('sponsor-ticker__item')} key={`${sponsor}-${index}`}>{sponsor}<i aria-hidden="true">✳</i></span>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   );

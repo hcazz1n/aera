@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import { Link } from "react-router";
-import './Navbar.css';
+import styles from './Navbar.module.css';
+
+const cx = (...classNames) => classNames.map((className) => styles[className]).filter(Boolean).join(' ');
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -19,19 +21,19 @@ const Navbar = () => {
     }, []); //creates the listener once only, and removes it once component unmounted
 
     return (
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="nav-container">
-            <Link to="/" className="nav-logo">
+        <nav className={cx('navbar', isScrolled && 'scrolled')}>
+        <div className={cx('nav-container')}>
+            <Link to="/" className={cx('nav-logo')}>
             <img src="/src/assets/aera_transparent.png" alt="AERA Logo" />
             </Link>
             
-            <div className="nav-links">
+            <div className={cx('nav-links')}>
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Link to="/topic">Topics</Link>
             <Link to="/team">Meet the Team</Link>
             <Link to="/under_construction">Contact Us</Link>
-            <Link to="/under_construction" className="register-btn">Register</Link>
+            <Link to="/under_construction" className={cx('register-btn')}>Register</Link>
             </div>
         </div>
         </nav>
@@ -39,5 +41,4 @@ const Navbar = () => {
 };
 
 export default Navbar
-
 

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import './UnderConstruction.css';
+import styles from './UnderConstruction.module.css';
+
+const cx = (...classNames) => classNames.map((className) => styles[className]).filter(Boolean).join(' ');
 
 const topNetwork = {
   nodes: [
@@ -23,8 +25,8 @@ const bottomNetwork = {
 
 function NodeNetwork({ network, activeNode }) {
   return (
-    <svg className="node-network" viewBox="-80 0 920 180" aria-hidden="true">
-      <g className="network-links">
+    <svg className={cx('node-network')} viewBox="-80 0 920 180" aria-hidden="true">
+      <g className={cx('network-links')}>
         {network.links.map(([from, to]) => (
           <line
             key={`${from}-${to}`}
@@ -35,13 +37,13 @@ function NodeNetwork({ network, activeNode }) {
           />
         ))}
       </g>
-      <g className="network-nodes">
-        {network.nodes.map(([cx, cy], index) => (
+      <g className={cx('network-nodes')}>
+        {network.nodes.map(([x, y], index) => (
           <circle
-            className={index === activeNode ? 'is-lit' : ''}
-            key={`${cx}-${cy}`}
-            cx={cx}
-            cy={cy}
+            className={index === activeNode ? cx('is-lit') : undefined}
+            key={`${x}-${y}`}
+            cx={x}
+            cy={y}
             r={index === activeNode ? 4.2 : 2.5}
           />
         ))}
@@ -59,20 +61,20 @@ export default function UnderConstruction() {
   }, []);
 
   return (
-    <main className="construction-page">
-      <div className="network network--top" aria-hidden="true">
+    <main className={cx('construction-page')}>
+      <div className={cx('network', 'network--top')} aria-hidden="true">
         <NodeNetwork network={topNetwork} activeNode={topNetwork.traversal[pulse % topNetwork.traversal.length]} />
       </div>
 
-      <section className="construction-content" aria-labelledby="construction-title">
-        <p className="eyebrow">AERA: Advancing Equity in Research Assembly</p>
-        <p className="intro">This page is currently under construction. Thank you for your patience. Check back soon!</p>
+      <section className={cx('construction-content')} aria-labelledby="construction-title">
+        <p className={cx('eyebrow')}>AERA: Advancing Equity in Research Assembly</p>
+        <p className={cx('intro')}>This page is currently under construction. Thank you for your patience. Check back soon!</p>
       </section>
 
-      <div className="network network--bottom" aria-hidden="true">
+      <div className={cx('network', 'network--bottom')} aria-hidden="true">
         <NodeNetwork network={bottomNetwork} activeNode={bottomNetwork.traversal[pulse % bottomNetwork.traversal.length]} />
       </div>
-      <p className="corner-note">Toronto, Canada<br/>Est. 2025</p>
+      <p className={cx('corner-note')}>Toronto, Canada<br/>Est. 2025</p>
     </main>
   );
 }

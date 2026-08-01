@@ -1,4 +1,4 @@
-#root {
+:global(#root) {
   min-height: 100svh;
 }
 
