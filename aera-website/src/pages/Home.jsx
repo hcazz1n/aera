@@ -63,31 +63,28 @@ export default function Home() {
   return (
     <main className={cx('home-container')}>
       <section className={cx('hero')} aria-labelledby="home-title">
-        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.3' }}>
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.6' }}>
           <div className={cx('hero__orb', 'hero__orb--one')} aria-hidden="true" />
         </div>
-        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.1' }}>
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.2' }}>
           <div className={cx('hero__orb', 'hero__orb--two')} aria-hidden="true" />
         </div>
-        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '-0.15' }}>
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.1' }}>
+          <div className={cx('hero__orb', 'hero__orb--three')} aria-hidden="true" />
         </div>
-
-        <div className={cx('hero__topline')}>
-          <span>AERA / 2026</span>
+        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '-0.15' }}>
+          <div className={cx('hero__spotlight')} aria-hidden="true" />
         </div>
 
         <h1 id="home-title" className={cx('hero__title')}>
-          Explore today,<br />
-          change tomorrow;<br />
-          <em>a new AERA</em> of research.
+          <span id={cx('topline')} className={cx('hero__title-line')}>A new...</span>
+          <span className={cx('hero__title-word')}>AERA</span>
+          <span id={cx('botline')} className={cx('hero__title-line')}>of research</span>
         </h1>
 
-        <div className={cx('hero__footer')}>
-          <div className={cx('hero__date')} aria-label="Conference date and location">
-            <span>December 5th, 2026</span>
-            <span>Toronto, ON</span>
-          </div>
-          <a className={cx('btn-primary')} href="https://docs.google.com/forms/d/e/1FAIpQLScfigf8fhJnxRxKzjVP7v7g2iz7XoHNjmo52ggVRnNaqTFHVA/viewform?pli=1" target="_blank" rel="noopener noreferrer">Register Here <span aria-hidden="true">↗</span></a>
+        <div className={cx('hero__bottom')}>
+          <span>December 5th, 2026</span>
+          <span>Toronto, ON</span>
         </div>
       </section>
 
@@ -95,10 +92,10 @@ export default function Home() {
         <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.2' }}>
         </div>
         <div className={cx('intro__header')}>
-          <h2 id="intro-title">Discover existing ideas, then build your very own.</h2>
+          <h2 id="intro-title">A research competition for underrepresented topics.</h2>
         </div>
         <div className={cx('intro__paragraph')}>
-          <p>AERA is a one-day research conference for questions that deserve more room, more care, and more voices. Encounter research ideas and share your own to advocate for underrepresented research and to meet professionals in the field.</p>
+          <p>AERA is a one-day research competition for questions that deserve more room, more care, and more voices. Encounter research ideas and share your own to advocate for underrepresented research and to meet professionals in the field.</p>
         </div>
       </section>
 
