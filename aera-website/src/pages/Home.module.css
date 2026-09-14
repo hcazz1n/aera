@@ -669,25 +669,3 @@
     padding-bottom: var(--space-lg);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__orb, .hero__spotlight, .sponsor-ticker__track {
-    animation: none;
-  }
-  
-  .hero__topline, .hero__title, .hero__footer, .intro, .values, .details {
-    animation: none;
-  }
-
-  .parallax-bg {
-    transform: none !important;
-  }
-
-  .dna-rung {
-    animation: none !important;
-  }
-
-  .btn-primary, .btn-primary span, .value-card__shade {
-    transition: none;
-  }
-}

@@ -213,13 +213,3 @@
     display: none;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .construction-content, .status-light {
-    animation: none;
-  }
-  
-  .network-nodes circle, .contact-link, .contact-link span {
-    transition: none;
-  }
-}

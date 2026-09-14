@@ -197,9 +197,3 @@
   color: var(--color-paper);
   font-weight: 500;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .aera-footer__index-line-1, .aera-footer__index-line-2 {
-    transition: none !important;
-  }
-}

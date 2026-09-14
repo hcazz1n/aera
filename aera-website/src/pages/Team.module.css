@@ -203,16 +203,6 @@
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .team-person-card {
-    transition: none;
-  }
-  .team-seal-edge {
-    transition: none;
-    stroke-dashoffset: 0;
-  }
-}
-
 @media (max-width: 640px) {
   .team-person-card {
     width: 150px;
