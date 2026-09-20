@@ -7,6 +7,7 @@ import About from './pages/About';
 import Topic from './pages/Topic';
 import Team from './pages/Team';
 import UnderConstruction from './pages/UnderConstruction';
+import logo from './assets/aera_connected_sm_ctr.png'
 
 import './App.css';
 
@@ -25,7 +26,7 @@ function App() {
         <Route path="/pricing" element={<Pricing/>}/>
         <Route path="/contact" element={<Contact/>}/> */}
       </Routes>
-      <Footer logoSrc="./src/assets/aera_connected_sm_ctr.png" />
+      <Footer logoSrc={logo} />
     </Router>
   );
 }

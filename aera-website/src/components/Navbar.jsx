@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import { Link } from "react-router";
 import styles from './Navbar.module.css';
+import logo from '../assets/aera_transparent.png'
 
 const cx = (...classNames) => classNames.map((className) => styles[className]).filter(Boolean).join(' ');
 
@@ -24,7 +25,7 @@ const Navbar = () => {
         <nav className={cx('navbar', isScrolled && 'scrolled')}>
         <div className={cx('nav-container')}>
             <Link to="/" className={cx('nav-logo')}>
-            <img src="/src/assets/aera_transparent.png" alt="AERA Logo" />
+            <img src={logo} alt="AERA Logo" />
             </Link>
             
             <div className={cx('nav-links')}>
