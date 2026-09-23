@@ -6,38 +6,51 @@ const cx = (...classNames) => classNames.map((className) => styles[className]).f
 
 const TEAM = [
     {
-        id: "executive",
-        name: "Executive Leadership",
-        blurb: "Empty",
-        members: [
-            { name: "Kristin Zérczi", role: "Co-Founder & Director" },
-            { name: "Elisha Yao", role: "Co-Founder & Director" },
-        ],
+      id: "executive",
+      name: "Co-Presidents",
+      blurb: "Empty",
+      members: [
+          { name: "Kristin Zérczi", role: "Co-Founder & Director" },
+          { name: "Elisha Yao", role: "Co-Founder & Director" },
+      ],
     },
     {
-        id: "ops",
-        name: "Operations & Logistics",
-        blurb: "Empty",
-        members: [
-            { name: "Marie Curie", role: "Radioactivity Pioneer" },
-            { name: "Albert Einstein", role: "Relativity Theory" },
-            { name: "Isaac Newton", role: "Classical Mechanics" },
-            { name: "Rosalind Franklin", role: "DNA Crystallography" },
-            { name: "Jane Goodall", role: "Chimpanzee Research" },
-        ],
+      id: "ops",
+      name: "Marketing",
+      blurb: "Empty",
+      members: [
+          { name: "Marie Curie", role: "Radioactivity Pioneer" },
+          { name: "Albert Einstein", role: "Relativity Theory" },
+          { name: "Isaac Newton", role: "Classical Mechanics" },
+          { name: "Rosalind Franklin", role: "DNA Crystallography" },
+          { name: "Jane Goodall", role: "Chimpanzee Research" },
+      ],
     },
     {
-        id: "outreach",
-        name: "Outreach",
-        blurb: "Empty",
-        members: [
-            { name: "Charles Darwin", role: "Evolution Theory" },
-            { name: "Nikola Tesla", role: "Alternating Current" },
-            { name: "Ada Lovelace", role: "Computer Programming" },
-            { name: "Katherine Johnson", role: "Orbital Mathematics" },
-            { name: "Alan Turing", role: "Computing Theory" },
-            { name: "Richard Feynman", role: "Quantum Electrodynamics" },
-        ],
+      id: "outreach",
+      name: "Outreach",
+      blurb: "Empty",
+      members: [
+          { name: "Charles Darwin", role: "Evolution Theory" },
+          { name: "Nikola Tesla", role: "Alternating Current" },
+          { name: "Ada Lovelace", role: "Computer Programming" },
+          { name: "Katherine Johnson", role: "Orbital Mathematics" },
+          { name: "Alan Turing", role: "Computing Theory" },
+          { name: "Richard Feynman", role: "Quantum Electrodynamics" },
+      ],
+    },
+    {
+      id: "outreach",
+      name: "Outreach",
+      blurb: "Empty",
+      members: [
+          { name: "Charles Darwin", role: "Evolution Theory" },
+          { name: "Nikola Tesla", role: "Alternating Current" },
+          { name: "Ada Lovelace", role: "Computer Programming" },
+          { name: "Katherine Johnson", role: "Orbital Mathematics" },
+          { name: "Alan Turing", role: "Computing Theory" },
+          { name: "Richard Feynman", role: "Quantum Electrodynamics" },
+      ],
     },
 ];
 

@@ -92,10 +92,10 @@ export default function Home() {
         <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.2' }}>
         </div>
         <div className={cx('intro__header')}>
-          <h2 id="intro-title">A research competition for underrepresented topics.</h2>
+          <h2 id="intro-title">A research competition for underrepresented audiences.</h2>
         </div>
         <div className={cx('intro__paragraph')}>
-          <p>AERA is a one-day research competition for questions that deserve more room, more care, and more voices. Encounter research ideas and share your own to advocate for underrepresented research and to meet professionals in the field.</p>
+          <p>At AERA, we ask questions that deserve more answers, uplift people that deserve more care, and support a world that needs more voices. Are you ready to challenge the limits of research with us?</p>
         </div>
       </section>
 
@@ -136,10 +136,10 @@ export default function Home() {
             <div><h3>Location</h3><p>University of Toronto St. George Campus<br />15 King's College Circle, Toronto, M5S 3H7<br /><small>University College</small></p></div>
           </article>
           <article className={cx('detail-row')}>
-            <div><h3>Format</h3><p>Format goes here!</p></div>
+            <div><h3>Format</h3><p>Teams of 3-5 give a 20 minute long presentation, prepared over the course of one month, during the single-day conference.<br /><small>Top 3 teams + most creative receive awards</small></p></div>
           </article>
           <article className={cx('detail-row')}>
-            <div><h3>When</h3><p>Saturday, December 5th, 2026<br /><small>Registration closes November 20th, 2026</small></p></div>
+            <div><h3>When</h3><p>Saturday, December 5th, 2026<br /><small>Registration closes October 28th, 2026</small></p></div>
           </article>
         </div>
       </section>

@@ -482,7 +482,7 @@
 .sponsor-ticker__track {
   display: flex;
   width: max-content;
-  animation: ticker 24s linear infinite;
+  animation: ticker 40s linear infinite;
 }
 
 .sponsor-ticker__item {

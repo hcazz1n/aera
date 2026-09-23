@@ -10,21 +10,6 @@ const PROMPT_PARAGRAPHS = [
     "Check back soon! Good luck and thank you :)"
 ];
 
-const SECTIONS = [
-  {
-    title: "Process Info Below",
-    body: "Nam tempus orci sit amet gravida consectetur. Fusce posuere porttitor lacus laoreet mattis. Duis fermentum quam lectus, vel lacinia arcu ullamcorper in.",
-  },
-  {
-    title: "Lorem Ipsum",
-    body: "Nam tempus orci sit amet gravida consectetur. Fusce posuere porttitor lacus laoreet mattis. Duis fermentum quam lectus, vel lacinia arcu ullamcorper in.",
-  },
-  {
-    title: "Dolor Sit",
-    body: "Nam tempus orci sit amet gravida consectetur. Fusce posuere porttitor lacus laoreet mattis. Duis fermentum quam lectus, vel lacinia arcu ullamcorper in.",
-  },
-];
-
 export default function TopicPage() {
   const stageRef = useRef(null);
 
@@ -99,15 +84,6 @@ export default function TopicPage() {
           </motion.div>
         </div>
       </div>
-
-      <main className={cx("more-info")}>
-        {SECTIONS.map((section) => (
-          <section key={section.title} className={cx("info-section")}>
-            <h2>{section.title}</h2>
-            <p>{section.body}</p>
-          </section>
-        ))}
-      </main>
     </div>
   );
 }
