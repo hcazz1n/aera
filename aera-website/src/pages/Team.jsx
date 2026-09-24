@@ -7,7 +7,7 @@ const cx = (...classNames) => classNames.map((className) => styles[className]).f
 const TEAM = [
     {
       id: "executive",
-      name: "Executives",
+      name: "Presidents",
       blurb: "Empty",
       members: [
           { name: "Kristin Zérczi", role: "Co-President" },

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useLayoutEffect } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import styles from './About.module.css';
 
@@ -17,9 +17,11 @@ const SECTIONS = [
   },
   {
     id: 'why-join',
-
     title: 'Why Join Us?',
-    text: 'Our conference offers a low-stakes research experience focused on teaching, skill development, and deep understanding, rather than high-stakes, unassisted competition. While our conference is still judged and winners are selected, our evaluation process emphasizes constructive feedback that helps teams improve and encourages them to integrate their passion into their work.',
+    text: `Our conference offers a low-stakes research experience focused on teaching, skill development, and deep understanding, rather than high-stakes, unassisted competition. While our conference is still judged and winners are selected, our evaluation process emphasizes constructive feedback that helps teams improve and encourages them to integrate their passion into their work. 
+    \n• Connect with and from AERA members, guest judges, and guest speakers throughout the conference.
+    • First-place winners receive the opportunity to shadow an actual research lab!
+    • Leave a lasting impact by becoming a voice of change for underrepresented and vital areas of research.`,
   },
   {
     id: 'marginalia',
@@ -72,9 +74,98 @@ function parseContent(text) {
   return blocks;
 }
 
+function BoxBorderFlow({ isSelected, shouldReduceMotion }) {
+  const containerRef = useRef(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
+    const el = containerRef.current;
+    const updateSize = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        setSize({ width: rect.width, height: rect.height });
+      }
+    };
+    updateSize();
+    const observer = new ResizeObserver(updateSize);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const { width: W, height: H } = size;
+  const R = 12;
+  const rInner = R - 1.5; // 10.5
+
+  if (W === 0 || H === 0) {
+    return (
+      <span
+        ref={containerRef}
+        className={cx('box-border-flow-container')}
+        aria-hidden="true"
+      />
+    );
+  }
+
+  const topPath = `M 1.5 1.5 L ${W - rInner} 1.5`;
+  const bottomPath = `M 1.5 ${H - 1.5} L ${W - rInner} ${H - 1.5}`;
+  const rightPath = `M ${W - R} 1.5 A ${rInner} ${rInner} 0 0 1 ${W - 1.5} ${R} L ${W - 1.5} ${H - R} A ${rInner} ${rInner} 0 0 1 ${W - R} ${H - 1.5}`;
+
+  const transition = shouldReduceMotion
+    ? { duration: 0 }
+    : { duration: 0.38, ease: [0.16, 1, 0.3, 1] };
+
+  return (
+    <span
+      ref={containerRef}
+      className={cx('box-border-flow-container')}
+      aria-hidden="true"
+    >
+      <svg
+        className={cx('box-border-svg')}
+        width={W}
+        height={H}
+        viewBox={`0 0 ${W} ${H}`}
+      >
+        <motion.path
+          d={topPath}
+          fill="none"
+          stroke="var(--color-accent)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          initial={false}
+          animate={{ pathLength: isSelected ? 1 : 0 }}
+          transition={transition}
+        />
+        <motion.path
+          d={bottomPath}
+          fill="none"
+          stroke="var(--color-accent)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          initial={false}
+          animate={{ pathLength: isSelected ? 1 : 0 }}
+          transition={transition}
+        />
+        <motion.path
+          d={rightPath}
+          fill="none"
+          stroke="var(--color-accent)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          initial={false}
+          animate={{ opacity: isSelected ? 1 : 0 }}
+          transition={transition}
+        />
+      </svg>
+    </span>
+  );
+}
+
 const About = () => {
   const [activeSection, setActiveSection] = useState(SECTIONS[0]);
   const shouldReduceMotion = useReducedMotion();
+  const blocks = useMemo(() => parseContent(activeSection.text), [activeSection.text]);
 
   return (
     <main className={cx('about-page')}>
@@ -98,6 +189,10 @@ const About = () => {
                   onClick={() => setActiveSection(section)}
                 >
                   <h2 className={cx('box-title')}>{section.title}</h2>
+                  <BoxBorderFlow
+                    isSelected={isSelected}
+                    shouldReduceMotion={shouldReduceMotion}
+                  />
                 </button>
               );
             })}
@@ -119,7 +214,33 @@ const About = () => {
                 className={cx('detail-content')}
               >
                 <h2 className={cx('detail-title')}>{activeSection.title}</h2>
-                <p className={cx('detail-text')}>{activeSection.text}</p>
+                {blocks.map((block, idx) => {
+                  if (block.type === 'list') {
+                    return (
+                      <ul key={idx} className={cx('detail-list')}>
+                        {block.items.map((item, itemIdx) => (
+                          <li key={itemIdx} className={cx('detail-list-item')}>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+                  return (
+                    <p key={idx} className={cx('detail-text')}>
+                      {block.content}
+                    </p>
+                  );
+                })}
+                {Array.isArray(activeSection.bullets) && activeSection.bullets.length > 0 && (
+                  <ul className={cx('detail-list')}>
+                    {activeSection.bullets.map((bullet, idx) => (
+                      <li key={idx} className={cx('detail-list-item')}>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </motion.div>
             </AnimatePresence>
           </article>

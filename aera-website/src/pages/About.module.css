@@ -35,6 +35,7 @@
 }
 
 .box {
+  position: relative;
   background-color: var(--color-paper);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
@@ -44,7 +45,7 @@
   cursor: pointer;
   font: inherit;
   box-shadow: none;
-  transition: border-color 0.25s ease;
+  transition: border-color var(--dur-fast) var(--ease-out);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,8 +64,22 @@
   outline-offset: 2px;
 }
 
-.box--active {
-  border-color: var(--color-accent);
+.box-border-flow {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -3px;
+  border: 3px solid var(--color-accent);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 1;
+  clip-path: inset(-2px 100% -2px -2px);
+  transition: clip-path 0.68s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.box-border-flow--active {
+  clip-path: inset(-2px -2px -2px -2px);
 }
 
 .box-title {

@@ -99,29 +99,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={cx('values')} aria-label="What AERA stands for">
-        <div className={cx('parallax-bg')} style={{ '--parallax-speed': '-0.1' }}>
-        </div>
-
-        <div className={cx('values__heading')}>
-          <p className={cx('section-kicker')}>Why AERA</p>
-          <p className={cx('section-kicker')}>AERA / 2026</p>
-        </div>
-        <div className={cx('values__grid')}>
-          {VALUES.map((value) => (
-            <article className={cx('value-card')} key={value.eyebrow}>
-              <DnaHelix variant={value.variant} />
-              <div className={cx('value-card__shade')} />
-              <div className={cx('value-card__content')}>
-                <p className={cx('value-card__eyebrow')}>{value.eyebrow}</p>
-                <h3>{value.title}</h3>
-                <p>{value.copy}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className={cx('details')} aria-labelledby="details-title">
         <div className={cx('parallax-bg')} style={{ '--parallax-speed': '0.15' }}>
         </div>

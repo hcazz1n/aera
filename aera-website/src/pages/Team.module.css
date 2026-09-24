@@ -44,6 +44,10 @@
 
 .team-department {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 /* Section divider lives on the section itself, not the header, and is
@@ -57,26 +61,27 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 640px;
+  max-width: 900px;
   height: 1px;
   background: var(--color-border);
 }
 
 .team-department-header {
   margin: 0 auto var(--space-md);
-  max-width: 640px;
+  width: 100%;
+  max-width: 900px;
   text-align: center;
 }
 
 .team-department-name {
   position: relative;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
+  width: fit-content;
+  margin: 0 auto var(--space-md);
+  font-family: var(--font-display);
+  font-weight: 500;
   font-size: var(--text-2xl);
-  margin-bottom: var(--space-md);
+  color: var(--color-ink);
+  text-align: center;
 }
 
 .team-department-name::after {
@@ -85,23 +90,10 @@
   left: 50%;
   bottom: -10px;
   transform: translateX(-50%);
-  width: 1.75rem;
+  width: 2.25rem;
   height: 2px;
   border-radius: 2px;
   background: var(--dept-tint, var(--color-accent));
-}
-
-.team-department-count {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: var(--text-sm);
-  color: var(--color-ink-muted);
-}
-
-.team-department-blurb {
-  margin: var(--space-sm) 0 0;
-  font-size: var(--text-base);
-  color: var(--color-ink-muted);
 }
 
 .team-person-grid {
