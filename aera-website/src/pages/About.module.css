@@ -114,6 +114,37 @@
   color: var(--color-paper);
   line-height: 1.8;
   margin: 0;
+  white-space: pre-line;
+}
+
+.detail-text + .detail-text,
+.detail-text + .detail-list,
+.detail-list + .detail-text,
+.detail-list + .detail-list {
+  margin-top: var(--space-sm);
+}
+
+.detail-list {
+  margin: 0;
+  padding-left: var(--space-md);
+  list-style-type: disc;
+  color: var(--color-paper);
+}
+
+.detail-list-item {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--color-paper);
+  margin-bottom: var(--space-xs);
+}
+
+.detail-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-list-item::marker {
+  color: var(--color-focus);
 }
 
 @keyframes fadeIn {
