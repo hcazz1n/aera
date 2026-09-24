@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useLayoutEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import styles from './About.module.css';
 
@@ -74,94 +74,6 @@ function parseContent(text) {
   return blocks;
 }
 
-function BoxBorderFlow({ isSelected, shouldReduceMotion }) {
-  const containerRef = useRef(null);
-  const [size, setSize] = useState({ width: 0, height: 0 });
-
-  useLayoutEffect(() => {
-    if (!containerRef.current) return;
-    const el = containerRef.current;
-    const updateSize = () => {
-      const rect = el.getBoundingClientRect();
-      if (rect.width > 0 && rect.height > 0) {
-        setSize({ width: rect.width, height: rect.height });
-      }
-    };
-    updateSize();
-    const observer = new ResizeObserver(updateSize);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const { width: W, height: H } = size;
-  const R = 12;
-  const rInner = R - 1.5; // 10.5
-
-  if (W === 0 || H === 0) {
-    return (
-      <span
-        ref={containerRef}
-        className={cx('box-border-flow-container')}
-        aria-hidden="true"
-      />
-    );
-  }
-
-  const topPath = `M 1.5 1.5 L ${W - rInner} 1.5`;
-  const bottomPath = `M 1.5 ${H - 1.5} L ${W - rInner} ${H - 1.5}`;
-  const rightPath = `M ${W - R} 1.5 A ${rInner} ${rInner} 0 0 1 ${W - 1.5} ${R} L ${W - 1.5} ${H - R} A ${rInner} ${rInner} 0 0 1 ${W - R} ${H - 1.5}`;
-
-  const transition = shouldReduceMotion
-    ? { duration: 0 }
-    : { duration: 0.38, ease: [0.16, 1, 0.3, 1] };
-
-  return (
-    <span
-      ref={containerRef}
-      className={cx('box-border-flow-container')}
-      aria-hidden="true"
-    >
-      <svg
-        className={cx('box-border-svg')}
-        width={W}
-        height={H}
-        viewBox={`0 0 ${W} ${H}`}
-      >
-        <motion.path
-          d={topPath}
-          fill="none"
-          stroke="var(--color-accent)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          initial={false}
-          animate={{ pathLength: isSelected ? 1 : 0 }}
-          transition={transition}
-        />
-        <motion.path
-          d={bottomPath}
-          fill="none"
-          stroke="var(--color-accent)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          initial={false}
-          animate={{ pathLength: isSelected ? 1 : 0 }}
-          transition={transition}
-        />
-        <motion.path
-          d={rightPath}
-          fill="none"
-          stroke="var(--color-accent)"
-          strokeWidth="3"
-          strokeLinecap="round"
-          initial={false}
-          animate={{ opacity: isSelected ? 1 : 0 }}
-          transition={transition}
-        />
-      </svg>
-    </span>
-  );
-}
-
 const About = () => {
   const [activeSection, setActiveSection] = useState(SECTIONS[0]);
   const shouldReduceMotion = useReducedMotion();
@@ -189,9 +101,12 @@ const About = () => {
                   onClick={() => setActiveSection(section)}
                 >
                   <h2 className={cx('box-title')}>{section.title}</h2>
-                  <BoxBorderFlow
-                    isSelected={isSelected}
-                    shouldReduceMotion={shouldReduceMotion}
+                  <span
+                    className={cx(
+                      'box-border-flow',
+                      isSelected && 'box-border-flow--active'
+                    )}
+                    aria-hidden="true"
                   />
                 </button>
               );
