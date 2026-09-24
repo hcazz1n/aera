@@ -54,4 +54,5 @@ After performing a redesign, build, or remove action, provide a list of changed 
 - **Build & Verification:** `npm run build`
     - Always ensure ensure the build passes cleanly without unused imports or syntax errors before finishing a task.
 
+- Only ask permission to run a command when it pertains to searching outside the aera directory and installing packages/dependencies. 
 - You will be working on a separate branch from main. You may use `npm run dev` and `npm run build`, but **never** push code.
