@@ -9,7 +9,7 @@ const cx = (...classNames) => classNames.map((className) => styles[className]).f
 const NAV_LINKS = [
   { label: "About AERA", href: "about" },
   { label: "Our Team", href: "team" },
-  { label: "Contact Us", href: "under_construction" },
+  { label: "Contact Us", href: "contact" },
   { label: "Register Now!", href: "https://docs.google.com/forms/d/e/1FAIpQLScfigf8fhJnxRxKzjVP7v7g2iz7XoHNjmo52ggVRnNaqTFHVA/viewform?pli=1"},
 ];
 

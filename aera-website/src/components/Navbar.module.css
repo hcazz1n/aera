@@ -110,3 +110,118 @@
   opacity: 0.9;
   transform: scale(1.03);
 }
+
+.mobile-menu-wrapper {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 6px;
+    color: var(--color-ink);
+    cursor: pointer;
+    transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-menu-btn:hover,
+  .mobile-menu-btn:focus-visible {
+    background-color: var(--color-paper-subtle);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    outline: none;
+  }
+
+  .mobile-dropdown {
+    position: absolute;
+    top: calc(100% + var(--space-xs));
+    right: 0;
+    width: min(calc(100vw - 2 * var(--space-md)), 240px);
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(60, 58, 94, 0.14);
+    padding: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1001;
+    animation: dropdownSlideDown var(--dur-fast) var(--ease-out);
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--color-ink);
+    font-weight: 500;
+    font-size: var(--text-base);
+    transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus-visible {
+    background-color: var(--color-paper-subtle);
+    color: var(--color-accent);
+    outline: none;
+  }
+
+  .dropdown-register-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-accent);
+    color: var(--color-paper);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: var(--text-base);
+    text-decoration: none;
+    margin-top: var(--space-xs);
+    transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dropdown-register-btn:hover,
+  .dropdown-register-btn:focus-visible {
+    opacity: 0.9;
+    color: var(--color-paper);
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes dropdownSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-dropdown {
+    animation: none;
+  }
+}

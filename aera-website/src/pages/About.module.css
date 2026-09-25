@@ -203,14 +203,15 @@
   .about-page {
     --about-spacing: var(--space-md);
     padding-bottom: 0;
+    min-height: auto;
   }
 
   .detail-panel {
     background-color: var(--color-ink);
     margin: var(--space-md) calc(var(--space-md) * -1) 0;
-    padding: var(--space-lg) var(--space-md);
+    padding: var(--space-md);
     height: auto;
-    min-height: 380px;
+    min-height: auto;
     max-height: none;
     scrollbar-width: none;
     -ms-overflow-style: none;

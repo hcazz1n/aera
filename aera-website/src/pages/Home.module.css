@@ -441,10 +441,30 @@
   padding: 1.45rem 0 1.65rem 2rem;
   border-bottom: 1px solid rgba(245, 234, 225, .35);
   transition: background-color var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.detail-row:hover {
-  background-color: rgba(245, 234, 225, 0.04);
+@media (hover: hover) {
+  .detail-row:hover {
+    background-color: rgba(245, 234, 225, 0.04);
+  }
+}
+
+.detail-row a[x-apple-data-detectors],
+.detail-row [x-apple-data-detectors],
+a[x-apple-data-detectors],
+[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-bottom: none !important;
+  pointer-events: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 .detail-row h3 {
