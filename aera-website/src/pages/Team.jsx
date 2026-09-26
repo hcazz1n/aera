@@ -184,7 +184,6 @@ function PersonCard({ name, role, image, tint, index }) {
       initial={reduceMotion ? false : { opacity: 0, y: 14 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      whileHover={reduceMotion ? undefined : { y: -4 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: index * 0.03 }}
     >
       <MemberPhoto name={name} image={image} tint={tint} />

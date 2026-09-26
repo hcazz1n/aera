@@ -117,22 +117,6 @@
   background: var(--color-paper);
   border: 1px solid var(--color-border);
   border-radius: 14px;
-  transition: box-shadow var(--dur-base) var(--ease-out),
-    border-color var(--dur-base) var(--ease-out);
-}
-
-.team-person-card:hover {
-  box-shadow: 0 14px 30px rgba(60, 58, 94, 0.14);
-  border-color: var(--color-focus);
-}
-
-.team-person-card:hover .team-seal-edge {
-  stroke-dashoffset: 0;
-}
-
-.team-person-card:hover{
-  border-color: var(--color-focus);
-  transform: scale(1.03);
 }
 
 .team-photo-wrapper {
@@ -154,7 +138,6 @@
   background-color: var(--color-paper-subtle);
   border: 1px solid var(--color-border);
   box-sizing: border-box;
-  transition: border-color var(--dur-base) var(--ease-out);
 }
 
 .team-seal {
@@ -175,10 +158,7 @@
 .team-seal-edge {
   stroke-width: 1;
   stroke-linecap: round;
-  stroke-dasharray: 60;
-  stroke-dashoffset: 60;
   opacity: 0.65;
-  transition: stroke-dashoffset var(--dur-base) var(--ease-out);
 }
 
 .team-seal-node {
