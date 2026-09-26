@@ -130,6 +130,33 @@
   stroke-dashoffset: 0;
 }
 
+.team-person-card:hover{
+  border-color: var(--color-focus);
+  transform: scale(1.03);
+}
+
+.team-photo-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.team-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background-color: var(--color-paper-subtle);
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
 .team-seal {
   display: block;
 }

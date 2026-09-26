@@ -1,17 +1,19 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import styles from "./Team.module.css";
 
 const cx = (...classNames) => classNames.map((className) => styles[className]).filter(Boolean).join(" ");
 
+// Optional `image` property can be added to any member object (e.g., image: "/path/to/photo.jpg" or imported asset).
+// If omitted or if loading fails, it automatically falls back to the procedural gen.
 const TEAM = [
     {
       id: "executive",
       name: "Presidents",
       blurb: "Empty",
       members: [
-          { name: "Kristin Zérczi", role: "Co-President" },
-          { name: "Elisha Yao", role: "Co-President" },
+          { name: "Kristin Zérczi", role: "Co-President", image: "/team/kristin.jpg" },
+          { name: "Elisha Yao", role: "Co-President", image: "/team/elisha.jpg" },
       ],
     },
     {
@@ -19,10 +21,10 @@ const TEAM = [
       name: "Marketing",
       blurb: "Empty",
       members: [
-          { name: "Erin Cha", role: "Content Creation" },
-          { name: "Maya Cannedy-Azim", role: "Content Creation" },
-          { name: "Victoria Wang", role: "Content Creation" },
-          { name: "Lindsay Harrison", role: "Content Creation" },
+          { name: "Erin Cha", role: "Content Creation", image: "/team/erin.jpg" },
+          { name: "Maya Cannedy-Azim", role: "Content Creation", image: "/team/maya.jpg" },
+          { name: "Victoria Wang", role: "Content Creation", image: "/team/victoria.jpg" },
+          { name: "Lindsay Harrison", role: "Content Creation", image: "/team/lindsay.jpg" },
       
       ],
     },
@@ -31,10 +33,10 @@ const TEAM = [
       name: "Logistics & Outreach",
       blurb: "Empty",
       members: [
-          { name: "Tiffany Zhang", role: "Vice President Logistics" },
-          { name: "Harrison Cazzin", role: "Vice President Web Dev" },
-          { name: "Stefan Petrescu", role: "Outreach" },
-          { name: "Arya Zargarpourfardin", role: "Logistics" },
+          { name: "Tiffany Zhang", role: "Vice President Logistics", image: "/team/tiffany.jpg" },
+          { name: "Harrison Cazzin", role: "Vice President Web Dev", image: "/team/harry.jpg" },
+          { name: "Stefan Petrescu", role: "Outreach", image: "/team/stefan.jpg" },
+          { name: "Arya Zargarpourfardin", role: "Logistics", image: "/team/arya.jpg" },
       ],
     },
     {
@@ -42,7 +44,7 @@ const TEAM = [
       name: "Hiring Team",
       blurb: "Empty",
       members: [
-          { name: "Sandra Guo", role: "Vice President Hiring" },
+          { name: "Sandra Guo", role: "Vice President Hiring", image: "/team/sandra.jpg" },
       ],
     },
 ];
@@ -99,7 +101,7 @@ function buildSeal(name, size) {
   return { nodes, edges, center };
 }
 
-function Seal({ name, tint, size = 88 }) {
+function Seal({ name, tint, size = 100 }) {
   const { nodes, edges, center } = useMemo(
     () => buildSeal(name, size),
     [name, size]
@@ -117,13 +119,13 @@ function Seal({ name, tint, size = 88 }) {
         className={cx("team-seal-field")}
         cx={center}
         cy={center}
-        r={size * 0.44}
+        r={size * 0.49}
       />
       <circle
         className={cx("team-seal-ring")}
         cx={center}
         cy={center}
-        r={size * 0.46}
+        r={size * 0.49}
       />
       {edges.map(([a, b], i) => (
         <line
@@ -150,7 +152,30 @@ function Seal({ name, tint, size = 88 }) {
   );
 }
 
-function PersonCard({ name, role, tint, index }) {
+function MemberPhoto({ name, image, tint, size = 100 }) {
+  const [failedSrc, setFailedSrc] = useState(null);
+
+  if (!image || failedSrc === image) {
+    return <Seal name={name} tint={tint} size={size} />;
+  }
+
+  return (
+    <div className={cx("team-photo-wrapper")} style={{ width: size, height: size }}>
+      <img
+        src={image}
+        alt={name}
+        className={cx("team-photo")}
+        width={size}
+        height={size}
+        loading="lazy"
+        decoding="async"
+        onError={() => setFailedSrc(image)}
+      />
+    </div>
+  );
+}
+
+function PersonCard({ name, role, image, tint, index }) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -162,7 +187,7 @@ function PersonCard({ name, role, tint, index }) {
       whileHover={reduceMotion ? undefined : { y: -4 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: index * 0.03 }}
     >
-      <Seal name={name} tint={tint} />
+      <MemberPhoto name={name} image={image} tint={tint} />
       <p className={cx("team-person-name")}>{name}</p>
       <p className={cx("team-person-role")}>{role}</p>
     </motion.li>
@@ -191,6 +216,7 @@ function DepartmentSection({ department, tint }) {
             key={member.name}
             name={member.name}
             role={member.role}
+            image={member.image}
             tint={tint}
             index={i}
           />
