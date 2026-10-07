@@ -21,11 +21,11 @@ const TEAM = [
       name: "Marketing",
       blurb: "Empty",
       members: [
-          { name: "Erin Cha", role: "Content Creation", image: "/team/erin.jpg" },
-          { name: "Maya Cannedy-Azim", role: "Content Creation", image: "/team/maya.jpg" },
-          { name: "Victoria Wang", role: "Content Creation", image: "/team/victoria.jpg" },
-          { name: "Lindsay Harrison", role: "Content Creation", image: "/team/lindsay.jpg" },
-      
+          { name: "Erin Cha", role: "Marketing", image: "/team/erin.jpg" },
+          { name: "Maya Cannedy-Azim", role: "Marketing", image: "/team/maya.jpg" },
+          { name: "Victoria Wang", role: "Marketing", image: "/team/victoria.jpg" },
+          { name: "Lindsay Harrison", role: "Marketing", image: "/team/lindsay.jpg" },
+          { name: "Tessa North", role: "Marketing", image: "/team/tessa.jpg" },
       ],
     },
     {
